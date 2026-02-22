@@ -1,6 +1,6 @@
 {
   "name": "@crashsense/ai",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "CrashSense AI integration — LLM client, crash payload builder, response parser",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",

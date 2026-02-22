@@ -20,7 +20,13 @@ jobs:
           scope: '@crashsense'
 
       - run: npm install
-      - run: npm run copy-readme
+
+      - name: Copy README to packages
+        run: |
+          for pkg in packages/*/; do
+            cp README.md "$pkg/README.md"
+            echo "Copied to $pkg"
+          done
       - run: npm run build
       - run: npm publish --workspaces --registry=https://npm.pkg.github.com --access public
         env:

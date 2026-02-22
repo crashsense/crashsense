@@ -1,6 +1,6 @@
 {
   "name": "crashsense",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Crash diagnosis SDK for React, Vue, and mobile web — root cause analysis, not just error capture",
   "author": "hoainho <nhoxtvt@gmail.com>",
@@ -20,7 +20,9 @@
     "test": "npx vitest run",
     "lint": "tsc --noEmit --project tsconfig.json",
     "clean": "rm -rf packages/*/dist",
-    "publish:all": "npm run build && npm publish --workspaces --access public"
+    "copy-readme": "for pkg in packages/*/; do cp README.md \"$pkg/README.md\"; done",
+    "publish:all": "npm run copy-readme && npm run build && npm publish --workspaces --access public",
+    "publish:github": "npm run copy-readme && npm run build && npm publish --workspaces --registry=https://npm.pkg.github.com"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -1,6 +1,6 @@
 {
   "name": "@crashsense/core",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "CrashSense core crash detection engine — error interception, memory monitoring, crash classification",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",
