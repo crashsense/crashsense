@@ -22,7 +22,10 @@
     "clean": "rm -rf packages/*/dist",
     "copy-readme": "for pkg in packages/*/; do cp README.md \"$pkg/README.md\"; done",
     "publish:all": "npm run copy-readme && npm run build && npm publish --workspaces --access public",
-    "publish:github": "npm run copy-readme && npm run build && npm publish --workspaces --registry=https://npm.pkg.github.com"
+    "publish:github": "npm run copy-readme && npm run build && npm publish --workspaces --registry=https://npm.pkg.github.com",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -35,6 +38,7 @@
     "jsdom": "^28.1.0",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
+    "vitepress": "^1.6.4",
     "vitest": "^4.0.18",
     "vue": "^3.5.28"
   }
