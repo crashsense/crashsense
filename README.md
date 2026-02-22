@@ -107,6 +107,12 @@ With CrashSense, the same crash gives you this:
 
 ```bash
 npm install @crashsense/core
+# or
+yarn add @crashsense/core
+# or
+pnpm add @crashsense/core
+# or
+bun add @crashsense/core
 ```
 
 ```ts
@@ -130,6 +136,12 @@ That's it. CrashSense is now monitoring memory, event loop, network, and capturi
 
 ```bash
 npm install @crashsense/core @crashsense/react
+# or
+yarn add @crashsense/core @crashsense/react
+# or
+pnpm add @crashsense/core @crashsense/react
+# or
+bun add @crashsense/core @crashsense/react
 ```
 
 ```tsx
@@ -178,6 +190,12 @@ function Checkout() {
 
 ```bash
 npm install @crashsense/core @crashsense/vue
+# or
+yarn add @crashsense/core @crashsense/vue
+# or
+pnpm add @crashsense/core @crashsense/vue
+# or
+bun add @crashsense/core @crashsense/vue
 ```
 
 ```ts
@@ -212,6 +230,12 @@ useReactivityTracker({
 
 ```bash
 npm install @crashsense/ai
+# or
+yarn add @crashsense/ai
+# or
+pnpm add @crashsense/ai
+# or
+bun add @crashsense/ai
 ```
 
 ```ts
@@ -553,6 +577,12 @@ See [open issues](https://github.com/hoainho/crashsense/issues) for ideas.
 
 ## Changelog
 
+
+### v1.1.1 (2026)
+
+- **Bug Fix**: `captureException` now correctly merges framework context (e.g., `framework: 'react'`) into `rawEvent.framework` instead of `meta.tags`, resolving an issue where crash reports always showed `framework.name: "vanilla"` even when using `@crashsense/react` or `@crashsense/vue`
+- **DX Improvement**: Added comprehensive JSDoc comments to all exported types in `@crashsense/types`, providing inline IDE documentation for every interface, field, and configuration option with `@default` tags on config fields
+- **Docs**: Added yarn, pnpm, and bun install commands alongside npm in all documentation
 
 ### v1.1.0 (2026)
 

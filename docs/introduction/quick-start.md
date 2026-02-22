@@ -4,9 +4,25 @@
 
 Install the core package:
 
-```bash
+::: code-group
+
+```bash [npm]
 npm install @crashsense/core
 ```
+
+```bash [yarn]
+yarn add @crashsense/core
+```
+
+```bash [pnpm]
+pnpm add @crashsense/core
+```
+
+```bash [bun]
+bun add @crashsense/core
+```
+
+:::
 
 Initialize CrashSense in your application:
 
@@ -30,9 +46,25 @@ That's it. CrashSense is now monitoring memory, event loop, network, and capturi
 
 Install the React adapter alongside core:
 
-```bash
+::: code-group
+
+```bash [npm]
 npm install @crashsense/core @crashsense/react
 ```
+
+```bash [yarn]
+yarn add @crashsense/core @crashsense/react
+```
+
+```bash [pnpm]
+pnpm add @crashsense/core @crashsense/react
+```
+
+```bash [bun]
+bun add @crashsense/core @crashsense/react
+```
+
+:::
 
 Wrap your application with `CrashSenseProvider`:
 
@@ -81,9 +113,25 @@ function Checkout() {
 
 Install the Vue adapter alongside core:
 
-```bash
+::: code-group
+
+```bash [npm]
 npm install @crashsense/core @crashsense/vue
 ```
+
+```bash [yarn]
+yarn add @crashsense/core @crashsense/vue
+```
+
+```bash [pnpm]
+pnpm add @crashsense/core @crashsense/vue
+```
+
+```bash [bun]
+bun add @crashsense/core @crashsense/vue
+```
+
+:::
 
 Register the plugin with your Vue app:
 
@@ -117,9 +165,25 @@ useReactivityTracker({
 
 Install the AI package:
 
-```bash
+::: code-group
+
+```bash [npm]
 npm install @crashsense/ai
 ```
+
+```bash [yarn]
+yarn add @crashsense/ai
+```
+
+```bash [pnpm]
+pnpm add @crashsense/ai
+```
+
+```bash [bun]
+bun add @crashsense/ai
+```
+
+:::
 
 Create an AI client and analyze crash events:
 

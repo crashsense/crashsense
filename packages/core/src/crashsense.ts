@@ -290,9 +290,35 @@ export function createCrashSense(userConfig: CrashSenseConfig): CrashSenseCore {
       const err = error instanceof Error ? error : new Error(String(error));
       const rawEvent = buildRawEvent(err, 'manual');
       if (context) {
-        rawEvent.meta.tags = { ...rawEvent.meta.tags, ...Object.fromEntries(
-          Object.entries(context).map(([k, v]) => [k, String(v)])
-        )};
+        // Extract framework-related fields into rawEvent.framework
+        const frameworkKeys = new Set([
+          'framework', 'lifecycleStage', 'componentStack', 'componentTree',
+          'currentRoute', 'storeState', 'renderCount', 'componentName', 'lifecycleInfo',
+        ]);
+        const tagEntries: Array<[string, string]> = [];
+        for (const [key, value] of Object.entries(context)) {
+          if (key === 'framework' && typeof value === 'string') {
+            rawEvent.framework.name = value;
+          } else if (key === 'lifecycleStage' || key === 'lifecycleInfo') {
+            rawEvent.framework.lifecycleStage = String(value);
+          } else if (key === 'componentStack' || key === 'componentTree') {
+            rawEvent.framework.componentTree = Array.isArray(value) ? value : [String(value)];
+          } else if (key === 'currentRoute' && typeof value === 'string') {
+            rawEvent.framework.currentRoute = value;
+          } else if (key === 'storeState' && typeof value === 'object' && value !== null) {
+            rawEvent.framework.storeState = value as Record<string, unknown>;
+          } else if (key === 'renderCount' && typeof value === 'number') {
+            rawEvent.framework.renderCount = value;
+          } else if (key === 'componentName') {
+            // Store as tag -- not a FrameworkContext field but useful metadata
+            tagEntries.push([key, String(value)]);
+          } else if (!frameworkKeys.has(key)) {
+            tagEntries.push([key, String(value)]);
+          }
+        }
+        if (tagEntries.length > 0) {
+          rawEvent.meta.tags = { ...rawEvent.meta.tags, ...Object.fromEntries(tagEntries) };
+        }
       }
       processRawEvent(rawEvent);
     },

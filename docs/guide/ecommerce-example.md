@@ -4,9 +4,25 @@ A complete walkthrough of integrating CrashSense in a React e-commerce checkout 
 
 ## Setup
 
-```bash
+::: code-group
+
+```bash [npm]
 npm install @crashsense/core @crashsense/react @crashsense/ai
 ```
+
+```bash [yarn]
+yarn add @crashsense/core @crashsense/react @crashsense/ai
+```
+
+```bash [pnpm]
+pnpm add @crashsense/core @crashsense/react @crashsense/ai
+```
+
+```bash [bun]
+bun add @crashsense/core @crashsense/react @crashsense/ai
+```
+
+:::
 
 ## Complete Implementation
 

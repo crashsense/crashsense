@@ -1,6 +1,12 @@
 # Changelog
 
 
+## v1.1.1 (2026)
+
+- **Bug Fix**: `captureException` now correctly merges framework context (e.g., `framework: 'react'`) into `rawEvent.framework` instead of `meta.tags`, resolving an issue where crash reports always showed `framework.name: "vanilla"` even when using `@crashsense/react` or `@crashsense/vue`
+- **DX Improvement**: Added comprehensive JSDoc comments to all exported types in `@crashsense/types`, providing inline IDE documentation for every interface, field, and configuration option with `@default` tags on config fields
+- **Docs**: Added yarn, pnpm, and bun install commands alongside npm in all documentation
+
 ## v1.1.0 (2026) <Badge type="tip" text="NEW" />
 
 - **OOM Recovery Detection** — detect when the browser OOM-kills a tab and recover crash context on reload <Badge type="tip" text="NEW" />

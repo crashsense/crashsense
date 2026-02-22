@@ -30,7 +30,7 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/plugins' },
       { text: 'API', link: '/api/configuration' },
       {
-        text: 'v1.1.0',
+        text: 'v1.1.1',
         items: [
           { text: 'Changelog', link: '/introduction/changelog' },
           { text: 'npm', link: 'https://www.npmjs.com/package/@crashsense/core' },

@@ -1,6 +1,6 @@
 {
   "name": "@crashsense/types",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Shared TypeScript type definitions for CrashSense",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",
