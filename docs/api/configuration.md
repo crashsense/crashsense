@@ -34,6 +34,46 @@ const cs = createCrashSense({
 | `enableIframeTracking` | `boolean` | `false` | Track iframe additions/removals via MutationObserver |
 | `enablePreCrashWarning` | `boolean` | `false` | Enable 3-tier pre-crash warning system |
 
+## OOM Recovery <Badge type="tip" text="v1.1.0" />
+
+Detect when the OS kills a tab due to memory exhaustion (OOM) and recover crash context on the next page load. When enabled, CrashSense periodically snapshots system state to `sessionStorage` and analyzes 6 signals on reload to determine if the previous session ended in an OOM kill.
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `enableOOMRecovery` | `boolean` | `false` | Enable OOM recovery detection. When `true`, checkpoints are written to `sessionStorage` and analyzed on reload. |
+| `checkpointInterval` | `number` | `10000` | Interval in milliseconds between checkpoint writes. Lower values capture more context but increase storage I/O. |
+| `oomRecoveryThreshold` | `number` | `0.3` | Minimum probability (0–1) to classify a reload as an OOM recovery. Lower values are more sensitive (more false positives). |
+| `flushEndpoint` | `string` | `null` | URL to send emergency data via `navigator.sendBeacon()` on `visibilitychange`/`pagehide`/`freeze`. If `null`, data is only persisted to `sessionStorage`. |
+
+### How It Works
+
+1. **Checkpoint Manager** — Periodically writes system state, breadcrumbs, and pre-crash warnings to `sessionStorage`
+2. **Lifecycle Flush** — On `visibilitychange`, `pagehide`, or `freeze`, immediately persists current state and optionally beacons to `flushEndpoint`
+3. **OOM Detection** — On next page load (before monitors start), analyzes 6 signals:
+   - `document.wasDiscarded` — browser explicitly reports tab discard
+   - Navigation type — `back_forward` or `reload` suggests recovery
+   - Memory trend — was memory growing before the kill?
+   - Pre-crash warnings — were elevated/critical/imminent warnings recorded?
+   - Memory utilization — was heap usage dangerously high?
+   - Device characteristics — low-memory devices are more susceptible
+
+### Usage
+
+```ts
+const cs = createCrashSense({
+  appId: 'my-app',
+  enableOOMRecovery: true,
+  checkpointInterval: 5000,
+  oomRecoveryThreshold: 0.3,
+  flushEndpoint: '/api/crash-beacon',
+  onOOMRecovery: (report) => {
+    console.log('OOM detected!', report.probability);
+    console.log('Signals:', report.signals);
+    console.log('Last checkpoint:', report.lastCheckpoint);
+  },
+});
+```
+
 ## Rate Limiting
 
 | Option | Type | Default | Description |
@@ -58,6 +98,7 @@ const cs = createCrashSense({
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `onCrash` | `(report) => void` | `undefined` | Called when a crash is detected. Receives the full crash report. |
+| `onOOMRecovery` | `(report) => void` | `undefined` | Called when an OOM recovery is detected on page load. Receives an `OOMRecoveryReport` with probability, signals, and last checkpoint data. |
 
 ## Debug
 
@@ -84,27 +125,26 @@ const cs = createCrashSense({
   enableNetworkMonitoring: true,
   enableIframeTracking: true,
   enablePreCrashWarning: true,
-
-  // Rate limiting
+  enableOOMRecovery: true,
+  checkpointInterval: 5000,
+  oomRecoveryThreshold: 0.3,
+  flushEndpoint: '/api/crash-beacon',
   sampleRate: 1.0,
   maxEventsPerMinute: 30,
-
   // Privacy
   piiScrubbing: true,
-
-  // Thresholds
   preCrashMemoryThreshold: 0.85,
-
-  // Debug
   debug: false,
-
-  // Callbacks
   onCrash: async (report) => {
     await fetch('/api/crashes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(report),
     });
+  },
+  onOOMRecovery: (report) => {
+    console.log('Tab was OOM-killed! Probability:', report.probability);
+    console.log('Signals:', report.signals);
   },
 });
 ```
