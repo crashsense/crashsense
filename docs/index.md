@@ -15,6 +15,10 @@ hero:
       text: GitHub
       link: https://github.com/crashsense/crashsense
 features:
+  - title: OOM Recovery Detection
+    details: Detect when the OS kills a tab due to memory exhaustion and recover full crash context — checkpoints, breadcrumbs, and pre-crash warnings — on the next page load.
+    link: /api/configuration#oom-recovery
+    linkText: Learn more
   - title: 7 Crash Categories
     details: Memory issues, event loop blocking, React/Vue framework errors, network failures, iframe overload, and runtime errors — each with confidence scoring.
   - title: AI-Powered Fix Suggestions
