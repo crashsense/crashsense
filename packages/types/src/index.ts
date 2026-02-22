@@ -235,6 +235,11 @@ export interface CrashSenseConfig {
   piiScrubbing?: boolean;
   debug?: boolean;
   onCrash?: (report: CrashReport) => void;
+  onOOMRecovery?: (report: OOMRecoveryReport) => void;
+  enableOOMRecovery?: boolean;
+  checkpointInterval?: number;
+  oomRecoveryThreshold?: number;
+  flushEndpoint?: string;
 }
 
 export interface ResolvedConfig {
@@ -252,6 +257,11 @@ export interface ResolvedConfig {
   piiScrubbing: boolean;
   debug: boolean;
   onCrash: ((report: CrashReport) => void) | null;
+  enableOOMRecovery: boolean;
+  checkpointInterval: number;
+  oomRecoveryThreshold: number;
+  flushEndpoint: string | null;
+  onOOMRecovery: ((report: OOMRecoveryReport) => void) | null;
 }
 
 // ---------------------
@@ -303,6 +313,9 @@ export type EventBusEventMap = {
   'iframe_removed': { src: string; totalCount: number; timestamp: number };
   'pre_crash_warning': { level: PreCrashLevel; memoryUtilization: number | null; iframeCount: number; reason: string; timestamp: number };
   'breadcrumb': Breadcrumb;
+  'oom_recovery': { report: OOMRecoveryReport };
+  'checkpoint_written': { timestamp: number; sessionId: string };
+  'lifecycle_flush': { reason: string; timestamp: number };
 };
 
 export type PreCrashLevel = 'elevated' | 'critical' | 'imminent';
@@ -434,4 +447,47 @@ export interface ClassificationResult {
   subcategory: string;
   confidence: number;
   contributingFactors: ContributingFactor[];
+}
+
+// ---------------------
+// OOM Recovery Types
+// ---------------------
+
+export interface CheckpointData {
+  version: number;
+  timestamp: number;
+  sessionId: string;
+  appId: string;
+  url: string;
+  breadcrumbs: Breadcrumb[];
+  systemState: Partial<SystemState>;
+  device: DeviceInfo;
+  preCrashWarnings: Array<{
+    level: PreCrashLevel;
+    reason: string;
+    timestamp: number;
+  }>;
+  memoryTrend: MemoryTrend | null;
+  checkpointCount: number;
+}
+
+export interface OOMRecoveryReport {
+  id: string;
+  type: 'oom_recovery';
+  timestamp: number;
+  probability: number;
+  sessionId: string;
+  previousSessionId: string;
+  timeSinceLastCheckpoint: number;
+  wasDiscarded: boolean | undefined;
+  navigationType: string;
+  lastCheckpoint: CheckpointData;
+  device: DeviceInfo;
+  signals: OOMSignal[];
+}
+
+export interface OOMSignal {
+  signal: string;
+  weight: number;
+  evidence: string;
 }

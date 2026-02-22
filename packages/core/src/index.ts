@@ -17,4 +17,7 @@ export type {
   EventBus,
   IframeState,
   PreCrashLevel,
+  OOMRecoveryReport,
+  CheckpointData,
+  OOMSignal,
 } from '@crashsense/types';

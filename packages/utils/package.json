@@ -1,6 +1,6 @@
 {
   "name": "@crashsense/utils",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Internal utilities for CrashSense — ring buffer, fingerprint, rate limiter, event bus",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",

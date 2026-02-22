@@ -30,6 +30,9 @@ import { createBreadcrumbTracker } from './breadcrumb-tracker';
 import { createIframeTracker } from './iframe-tracker';
 import { createPreCrashWarning } from './pre-crash-warning';
 import { classifyCrash } from './crash-classifier';
+import { createCheckpointManager } from './checkpoint-manager';
+import { detectOOMRecovery } from './oom-recovery';
+import { createLifecycleFlush } from './lifecycle-flush';
 
 export function createCrashSense(userConfig: CrashSenseConfig): CrashSenseCore {
   const config = resolveConfig(userConfig);
@@ -50,6 +53,38 @@ export function createCrashSense(userConfig: CrashSenseConfig): CrashSenseCore {
   const breadcrumbTracker = createBreadcrumbTracker(bus);
   const iframeTracker = createIframeTracker(bus, config);
   const preCrashWarning = createPreCrashWarning(bus, config, memoryMonitor, iframeTracker);
+
+  // OOM Recovery: checkpoint manager
+  const checkpointManager = createCheckpointManager(
+    bus,
+    config,
+    sessionId,
+    deviceInfo,
+    () => ({
+      memory: memoryMonitor.getSnapshot(),
+      cpu: eventLoopMonitor.getCpuSnapshot(),
+      eventLoop: eventLoopMonitor.getEventLoopSnapshot(),
+      network: networkMonitor.getSnapshot(),
+      iframe: config.enableIframeTracking ? iframeTracker.getSnapshot() : undefined,
+    }),
+    () => breadcrumbTracker.getBreadcrumbs(),
+  );
+
+  // OOM Recovery: lifecycle flush
+  const lifecycleFlush = createLifecycleFlush(
+    bus,
+    config,
+    sessionId,
+    () => ({
+      memory: memoryMonitor.getSnapshot(),
+      cpu: eventLoopMonitor.getCpuSnapshot(),
+      eventLoop: eventLoopMonitor.getEventLoopSnapshot(),
+      network: networkMonitor.getSnapshot(),
+      iframe: config.enableIframeTracking ? iframeTracker.getSnapshot() : undefined,
+    }),
+    () => breadcrumbTracker.getBreadcrumbs(),
+    () => checkpointManager.flush(),
+  );
 
   function buildRawEvent(error: Error, source: string): RawCrashEvent {
     const stack = error.stack ? parseStackTrace(error.stack) : [];
@@ -219,6 +254,12 @@ export function createCrashSense(userConfig: CrashSenseConfig): CrashSenseCore {
     });
   });
 
+  // OOM Recovery: detect if previous session was OOM-killed
+  // Must run BEFORE monitors start to read the checkpoint before it's overwritten
+  if (config.enableOOMRecovery) {
+    detectOOMRecovery(bus, config, sessionId);
+  }
+
   errorInterceptor.install();
   breadcrumbTracker.install();
   if (config.enableMemoryMonitoring) memoryMonitor.start();
@@ -226,6 +267,10 @@ export function createCrashSense(userConfig: CrashSenseConfig): CrashSenseCore {
   if (config.enableNetworkMonitoring) networkMonitor.start();
   if (config.enableIframeTracking) iframeTracker.start();
   if (config.enablePreCrashWarning) preCrashWarning.start();
+  if (config.enableOOMRecovery) {
+    checkpointManager.start();
+    lifecycleFlush.install();
+  }
 
   const core: CrashSenseCore = {
     get config(): ResolvedConfig {
@@ -295,6 +340,9 @@ export function createCrashSense(userConfig: CrashSenseConfig): CrashSenseCore {
       networkMonitor.stop();
       iframeTracker.stop();
       preCrashWarning.stop();
+      checkpointManager.stop();
+      checkpointManager.clearOnDestroy();
+      lifecycleFlush.uninstall();
       for (const plugin of plugins) {
         plugin.teardown();
       }

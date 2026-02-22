@@ -1,4 +1,4 @@
-import type { CrashSenseConfig, ResolvedConfig } from '@crashsense/types';
+import type { CrashSenseConfig, ResolvedConfig, OOMRecoveryReport } from '@crashsense/types';
 
 const SDK_VERSION = '0.1.0';
 
@@ -32,6 +32,11 @@ export function resolveConfig(userConfig: CrashSenseConfig): ResolvedConfig {
     piiScrubbing: userConfig.piiScrubbing ?? true,
     debug: userConfig.debug ?? false,
     onCrash: userConfig.onCrash ?? null,
+    enableOOMRecovery: userConfig.enableOOMRecovery ?? false,
+    checkpointInterval: userConfig.checkpointInterval ?? 10000,
+    oomRecoveryThreshold: userConfig.oomRecoveryThreshold ?? 0.3,
+    flushEndpoint: userConfig.flushEndpoint ?? null,
+    onOOMRecovery: userConfig.onOOMRecovery ?? null,
   };
 }
 
