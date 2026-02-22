@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f14"/>
+      <stop offset="50%" stop-color="#1a1a24"/>
+      <stop offset="100%" stop-color="#0f0f14"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8000e"/>
+      <stop offset="100%" stop-color="#9b0008"/>
+    </linearGradient>
+    <linearGradient id="lensGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e8000e" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#e8000e"/>
+      <stop offset="80%" stop-color="#e8000e"/>
+      <stop offset="100%" stop-color="#e8000e" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#e8000e" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#e8000e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="textShadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="0" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="60" y1="0" x2="60" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="120" y1="0" x2="120" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="180" y1="0" x2="180" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="240" y1="0" x2="240" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="360" y1="0" x2="360" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="420" y1="0" x2="420" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="480" y1="0" x2="480" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="540" y1="0" x2="540" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="660" y1="0" x2="660" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="720" y1="0" x2="720" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="780" y1="0" x2="780" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="840" y1="0" x2="840" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="960" y1="0" x2="960" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="1020" y1="0" x2="1020" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="1080" y1="0" x2="1080" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="1140" y1="0" x2="1140" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="1200" y1="0" x2="1200" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="63" x2="1200" y2="63" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="126" x2="1200" y2="126" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="189" x2="1200" y2="189" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="252" x2="1200" y2="252" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="378" x2="1200" y2="378" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="441" x2="1200" y2="441" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="504" x2="1200" y2="504" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="567" x2="1200" y2="567" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="630" x2="1200" y2="630" stroke="#fff" stroke-width="1"/>
+  </g>
+
+  <!-- Red glow behind logo -->
+  <ellipse cx="600" cy="260" rx="500" ry="280" fill="url(#glow)"/>
+
+  <!-- Logo: Shield with magnifying glass and lightning bolt -->
+  <g transform="translate(470, 80) scale(0.5)" filter="url(#shadow)">
+    <!-- Shield body -->
+    <path d="M256 28 L462 120 C462 120 472 320 256 484 C40 320 50 120 50 120 Z"
+          fill="url(#shieldGrad)"/>
+    <!-- Shield inner highlight -->
+    <path d="M256 56 L436 138 C436 138 444 310 256 454 C68 310 76 138 76 138 Z"
+          fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="3"/>
+    <!-- Magnifying glass circle -->
+    <circle cx="238" cy="220" r="100" fill="none" stroke="#ffffff" stroke-width="22" stroke-opacity="0.92"/>
+    <!-- Lens glare -->
+    <ellipse cx="200" cy="185" rx="35" ry="20" fill="url(#lensGrad)" transform="rotate(-30 200 185)"/>
+    <!-- Magnifying glass handle -->
+    <line x1="312" y1="294" x2="385" y2="367" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-opacity="0.92"/>
+    <!-- Lightning bolt -->
+    <path d="M220 150 L248 208 L218 208 L262 290" 
+          fill="none" stroke="#FFD600" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Lightning bolt glow -->
+    <path d="M220 150 L248 208 L218 208 L262 290" 
+          fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="395" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="64" font-weight="800" fill="#ffffff" letter-spacing="-1" filter="url(#textShadow)">CrashSense</text>
+
+  <!-- Accent line -->
+  <rect x="350" y="415" width="500" height="2" fill="url(#accentLine)" rx="1"/>
+
+  <!-- Tagline -->
+  <text x="600" y="460" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" fill="#a0a0b0" letter-spacing="0.5">Error monitoring tells you WHAT crashed.</text>
+  <text x="600" y="492" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" fill="#e8e8f0" font-weight="600" letter-spacing="0.5">CrashSense tells you WHY — and how to fix it.</text>
+
+  <!-- Bottom badge area -->
+  <g transform="translate(600, 555)">
+    <!-- npm badge -->
+    <rect x="-170" y="-16" width="100" height="32" rx="6" fill="#cb0000" opacity="0.9"/>
+    <text x="-120" y="6" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">npm</text>
+    <!-- TypeScript badge -->
+    <rect x="-50" y="-16" width="100" height="32" rx="6" fill="#3178C6" opacity="0.9"/>
+    <text x="0" y="6" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">TypeScript</text>
+    <!-- MIT badge -->
+    <rect x="70" y="-16" width="100" height="32" rx="6" fill="#49a057" opacity="0.9"/>
+    <text x="120" y="6" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">MIT</text>
+  </g>
+
+  <!-- Border -->
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2"/>
+</svg>

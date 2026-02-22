@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8000e"/>
+      <stop offset="100%" stop-color="#9b0008"/>
+    </linearGradient>
+    <linearGradient id="lensGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Shield body -->
+  <path d="M256 28 L462 120 C462 120 472 320 256 484 C40 320 50 120 50 120 Z"
+        fill="url(#shieldGrad)" filter="url(#shadow)"/>
+  <!-- Shield inner highlight -->
+  <path d="M256 56 L436 138 C436 138 444 310 256 454 C68 310 76 138 76 138 Z"
+        fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="3"/>
+  <!-- Magnifying glass circle -->
+  <circle cx="238" cy="220" r="100" fill="none" stroke="#ffffff" stroke-width="22" stroke-opacity="0.92"/>
+  <!-- Lens glare -->
+  <ellipse cx="200" cy="185" rx="35" ry="20" fill="url(#lensGrad)" transform="rotate(-30 200 185)"/>
+  <!-- Magnifying glass handle -->
+  <line x1="312" y1="294" x2="385" y2="367" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-opacity="0.92"/>
+  <!-- Lightning bolt / crack through the lens -->
+  <path d="M220 150 L248 208 L218 208 L262 290" 
+        fill="none" stroke="#FFD600" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Lightning bolt glow -->
+  <path d="M220 150 L248 208 L218 208 L262 290" 
+        fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+</svg>

@@ -7,15 +7,21 @@ export default defineConfig({
   
   head: [
     ['meta', { name: 'theme-color', content: '#cb0000' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/crashsense/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/crashsense/favicon-32x32.png' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/crashsense/favicon-16x16.png' }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/crashsense/apple-touch-icon.png' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'CrashSense — Crash Diagnosis SDK' }],
     ['meta', { property: 'og:description', content: 'Error monitoring tells you WHAT crashed. CrashSense tells you WHY — and how to fix it.' }],
-    ['meta', { property: 'og:url', content: 'https://crashsense.dev' }],
+    ['meta', { property: 'og:image', content: 'https://crashsense.github.io/crashsense/og-image.png' }],
+    ['meta', { property: 'og:url', content: 'https://crashsense.github.io/crashsense/' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:image', content: 'https://crashsense.github.io/crashsense/og-image.png' }],
   ],
 
   themeConfig: {
-    logo: undefined,
+    logo: '/logo.svg',
     siteTitle: 'CrashSense',
 
     nav: [
