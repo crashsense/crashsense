@@ -1,17 +1,17 @@
 {
   "name": "@crashsense/types",
-  "version": "0.1.0",
+  "version": "1.0.5",
   "description": "Shared TypeScript type definitions for CrashSense",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoainho/crashsense.git",
+    "url": "git+https://github.com/crashsense/crashsense.git",
     "directory": "packages/types"
   },
-  "homepage": "https://github.com/hoainho/crashsense/tree/main/packages/types",
+  "homepage": "https://github.com/crashsense/crashsense/tree/main/packages/types",
   "bugs": {
-    "url": "https://github.com/hoainho/crashsense/issues"
+    "url": "https://github.com/crashsense/crashsense/issues"
   },
   "keywords": [
     "crashsense",
@@ -34,7 +34,7 @@
     }
   },
   "files": [
-    "dist"
+    "dist", "README.md"
   ],
   "scripts": {
     "build": "tsup",

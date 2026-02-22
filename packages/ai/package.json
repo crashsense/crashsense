@@ -1,17 +1,17 @@
 {
   "name": "@crashsense/ai",
-  "version": "0.1.0",
+  "version": "1.0.5",
   "description": "CrashSense AI integration — LLM client, crash payload builder, response parser",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoainho/crashsense.git",
+    "url": "git+https://github.com/crashsense/crashsense.git",
     "directory": "packages/ai"
   },
-  "homepage": "https://github.com/hoainho/crashsense/tree/main/packages/ai",
+  "homepage": "https://github.com/crashsense/crashsense/tree/main/packages/ai",
   "bugs": {
-    "url": "https://github.com/hoainho/crashsense/issues"
+    "url": "https://github.com/crashsense/crashsense/issues"
   },
   "keywords": [
     "crashsense",
@@ -36,7 +36,7 @@
     }
   },
   "files": [
-    "dist"
+    "dist", "README.md"
   ],
   "scripts": {
     "build": "tsup",
@@ -44,7 +44,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@crashsense/types": "*"
+    "@crashsense/types": "^1.0.0"
   },
   "sideEffects": false
 }

@@ -1,17 +1,17 @@
 {
   "name": "@crashsense/core",
-  "version": "0.1.0",
+  "version": "1.0.5",
   "description": "CrashSense core crash detection engine — error interception, memory monitoring, crash classification",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoainho/crashsense.git",
+    "url": "git+https://github.com/crashsense/crashsense.git",
     "directory": "packages/core"
   },
-  "homepage": "https://github.com/hoainho/crashsense/tree/main/packages/core",
+  "homepage": "https://github.com/crashsense/crashsense/tree/main/packages/core",
   "bugs": {
-    "url": "https://github.com/hoainho/crashsense/issues"
+    "url": "https://github.com/crashsense/crashsense/issues"
   },
   "keywords": [
     "crashsense",
@@ -38,7 +38,7 @@
     }
   },
   "files": [
-    "dist"
+    "dist", "README.md"
   ],
   "scripts": {
     "build": "tsup",
@@ -46,8 +46,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@crashsense/types": "*",
-    "@crashsense/utils": "*"
+    "@crashsense/types": "^1.0.0",
+    "@crashsense/utils": "^1.0.0"
   },
   "sideEffects": false
 }
