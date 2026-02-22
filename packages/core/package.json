@@ -1,0 +1,53 @@
+{
+  "name": "@crashsense/core",
+  "version": "0.1.0",
+  "description": "CrashSense core crash detection engine — error interception, memory monitoring, crash classification",
+  "author": "hoainho <nhoxtvt@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoainho/crashsense.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/hoainho/crashsense/tree/main/packages/core",
+  "bugs": {
+    "url": "https://github.com/hoainho/crashsense/issues"
+  },
+  "keywords": [
+    "crashsense",
+    "crash-detection",
+    "error-monitoring",
+    "memory-leak",
+    "event-loop",
+    "iframe-tracking",
+    "pre-crash-warning",
+    "javascript",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@crashsense/types": "*",
+    "@crashsense/utils": "*"
+  },
+  "sideEffects": false
+}

@@ -1,0 +1,44 @@
+{
+  "name": "@crashsense/types",
+  "version": "0.1.0",
+  "description": "Shared TypeScript type definitions for CrashSense",
+  "author": "hoainho <nhoxtvt@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoainho/crashsense.git",
+    "directory": "packages/types"
+  },
+  "homepage": "https://github.com/hoainho/crashsense/tree/main/packages/types",
+  "bugs": {
+    "url": "https://github.com/hoainho/crashsense/issues"
+  },
+  "keywords": [
+    "crashsense",
+    "crash-detection",
+    "error-monitoring",
+    "typescript",
+    "types"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "sideEffects": false
+}

@@ -1,0 +1,39 @@
+{
+  "name": "crashsense",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Crash diagnosis SDK for React, Vue, and mobile web — root cause analysis, not just error capture",
+  "author": "hoainho <nhoxtvt@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoainho/crashsense.git"
+  },
+  "homepage": "https://github.com/hoainho/crashsense#readme",
+  "bugs": {
+    "url": "https://github.com/hoainho/crashsense/issues"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npx vitest run",
+    "lint": "tsc --noEmit --project tsconfig.json",
+    "clean": "rm -rf packages/*/dist",
+    "publish:all": "npm run build && npm publish --workspaces --access public"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "jsdom": "^28.1.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
+    "vue": "^3.5.28"
+  }
+}

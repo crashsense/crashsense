@@ -1,0 +1,53 @@
+{
+  "name": "@crashsense/vue",
+  "version": "0.1.0",
+  "description": "CrashSense Vue adapter — errorHandler integration, reactivity tracking",
+  "author": "hoainho <nhoxtvt@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoainho/crashsense.git",
+    "directory": "packages/vue"
+  },
+  "homepage": "https://github.com/hoainho/crashsense/tree/main/packages/vue",
+  "bugs": {
+    "url": "https://github.com/hoainho/crashsense/issues"
+  },
+  "keywords": [
+    "crashsense",
+    "vue",
+    "vue3",
+    "crash-detection",
+    "error-handler",
+    "reactivity-tracking"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@crashsense/types": "*",
+    "@crashsense/core": "*"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0"
+  },
+  "sideEffects": false
+}

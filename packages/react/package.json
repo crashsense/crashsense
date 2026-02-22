@@ -1,0 +1,54 @@
+{
+  "name": "@crashsense/react",
+  "version": "0.1.0",
+  "description": "CrashSense React adapter — ErrorBoundary, hydration detection, re-render tracking",
+  "author": "hoainho <nhoxtvt@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoainho/crashsense.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/hoainho/crashsense/tree/main/packages/react",
+  "bugs": {
+    "url": "https://github.com/hoainho/crashsense/issues"
+  },
+  "keywords": [
+    "crashsense",
+    "react",
+    "error-boundary",
+    "crash-detection",
+    "hydration",
+    "render-tracking"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@crashsense/types": "*",
+    "@crashsense/core": "*"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "sideEffects": false
+}
