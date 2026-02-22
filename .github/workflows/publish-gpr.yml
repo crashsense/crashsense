@@ -27,7 +27,16 @@ jobs:
             cp README.md "$pkg/README.md"
             echo "Copied to $pkg"
           done
-      - run: npm run build
+
+      - name: Build packages in dependency order
+        run: |
+          npm run build --workspace=packages/types
+          npm run build --workspace=packages/utils
+          npm run build --workspace=packages/core
+          npm run build --workspace=packages/ai
+          npm run build --workspace=packages/react
+          npm run build --workspace=packages/vue
+
       - run: npm publish --workspaces --registry=https://npm.pkg.github.com --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
