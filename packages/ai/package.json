@@ -1,6 +1,6 @@
 {
   "name": "@crashsense/ai",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "CrashSense AI integration — LLM client, crash payload builder, response parser",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",
@@ -36,7 +36,8 @@
     }
   },
   "files": [
-    "dist", "README.md"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup",

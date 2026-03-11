@@ -1,6 +1,6 @@
 {
   "name": "@crashsense/vue",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "CrashSense Vue adapter — errorHandler integration, reactivity tracking",
   "author": "hoainho <nhoxtvt@gmail.com>",
   "license": "MIT",
@@ -35,7 +35,8 @@
     }
   },
   "files": [
-    "dist", "README.md"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup",
